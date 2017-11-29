@@ -4,6 +4,7 @@
 #include <ctime>
 #include <string>
 #include <sstream>
+#include <fstream>
 
 namespace Helper
 {
@@ -20,11 +21,11 @@ namespace Helper
             struct tm *info = localtime(&s);
 
             day = info->tm_mday;
-            month = info->tm_month +1;
+            month = info->tm_mon +1;
             year = 1900 + info->tm_year;
             minutes = info->tm_min;
             hours = info->tm_hour;
-            seconds = imfo->tm_sec;
+            seconds = info->tm_sec;
         }
 
         DateTime(int day, int month, int year, int minutes, int hours, int seconds) :
@@ -38,10 +39,10 @@ namespace Helper
 
         int day, month, year, minutes, hours, seconds;
 
-        std::string GetDateString const
+        std::string GetDateString() const
         {
             return std::string(day < 10 ? "0" : "") + ToString(day) +
-                   std::string(month < 10 ? ".0" : ".") ToString(month) + "." + ToString(year);
+                   std::string(month < 10 ? ".0" : ".") + ToString(month) + "." + ToString(year);
         }
 
         std::string GetTimeString(const std::string &sep = ":") const
@@ -63,8 +64,16 @@ namespace Helper
     {
         std::ostringstream out;
         out << e;
+        return out.str();
     }
 
+    void WriteAppLog( const std::string &s)
+    {
+        std::ofstream file("AppLog.txt", std::ios::app);
+        file << "[" << Helper::DateTime().GetDateTimeString()
+             << "]" << "\n" << s << std::endl << "\n";
+        file.close();
+    }
 
 }
 
