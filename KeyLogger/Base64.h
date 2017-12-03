@@ -25,7 +25,7 @@ namespace Base64
 		s = s.insert(7, "M"); //scrambling the string
 		return s; //the result cannot be decoded just into base 64
 	}
-	const std::string &BASE64_CODES = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstruvwxyz123456789+/"
+	const std::string &BASE64_CODES = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstruvwxyz123456789+/";
 
 		std::string base64_encode(const std::string &s)
 	{
@@ -48,7 +48,7 @@ namespace Base64
 		}
 		if (bits > -6)
 		{
-			ret.push_back(BASE64_CODES[((val << 8) >> (bits + 8)) & b63])
+			ret.push_back(BASE64_CODES[((val << 8) >> (bits + 8)) & b63]);
 		}
 		while (ret.size() % 4)
 		{

@@ -24,24 +24,33 @@
 	<sstream>
 	<fstream>
 
-1512050762 source:c:\github\keylogger\keylogger\main.cpp
+1512326429 source:c:\github\keylogger\keylogger\main.cpp
 	<iostream>
 	<windows.h>
 	"KeyConstants.h"
 	"Helper.h"
 	"Base64.h"
+	"IO.h"
 
-1511960584 c:\github\keylogger\keylogger\keyconstants.h
+1512138966 c:\github\keylogger\keylogger\keyconstants.h
 	<map>
 	<string>
 
-1511960583 c:\github\keylogger\keylogger\helper.h
+1512326450 c:\github\keylogger\keylogger\helper.h
 	<ctime>
 	<string>
 	<sstream>
 	<fstream>
 
-1512050923 c:\github\keylogger\keylogger\base64.h
+1512325555 c:\github\keylogger\keylogger\base64.h
 	<vector>
 	<string>
+
+1512327551 c:\github\keylogger\keylogger\io.h
+	<string>
+	<cstdlib>
+	<fstream>
+	"windows.h"
+	"Helper.h"
+	"Base64.h"
 

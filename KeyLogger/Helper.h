@@ -37,7 +37,7 @@ namespace Helper
 			return DateTime();
 		}
 
-		int day, month, year, minutes, hours, seconds;
+		int day, month, year, hours, minutes, seconds;
 
 		std::string GetDateString() const
 		{
